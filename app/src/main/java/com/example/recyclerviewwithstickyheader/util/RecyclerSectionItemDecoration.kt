@@ -8,13 +8,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerviewwithstickyheader.R
+import kotlinx.android.synthetic.main.list_items.view.*
+import kotlinx.android.synthetic.main.view_header.view.*
 
 class RecyclerSectionItemDecoration(val headerOffSet: Int,
                                     val sticky: Boolean,
                                     val sectionCallback: SectionCallback?):
     RecyclerView.ItemDecoration() {
 
-     lateinit var headerView: View
+    var headerView: View? = null
     var header: TextView? = null
 
     override fun getItemOffsets(
@@ -35,10 +37,9 @@ class RecyclerSectionItemDecoration(val headerOffSet: Int,
     override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDrawOver(c, parent, state)
 
-        headerView = inflateHeaderView(parent)
-
         if (headerView == null) {
-            headerView = inflateHeaderView(parent)
+            headerView = inflateHeaderView(parent).tv_header
+            header = headerView as TextView
             fixLayoutSize(headerView!!,parent)
         }
 
@@ -52,7 +53,7 @@ class RecyclerSectionItemDecoration(val headerOffSet: Int,
             header?.setText(title)
 
             if (!prevoiusHeader!!.equals(title) || sectionCallback.isSection(position)) {
-                drawHeader(c,child,headerView)
+                drawHeader(c,child,headerView as View)
                 prevoiusHeader = title
             }
         }
