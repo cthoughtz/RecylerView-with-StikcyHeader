@@ -43,9 +43,9 @@ class RecyclerSectionItemDecoration(val headerOffSet: Int,
             fixLayoutSize(headerView!!,parent)
         }
 
-        var prevoiusHeader: CharSequence? = null
+        var prevoiusHeader: CharSequence? = ""
 
-        for (i in 0..parent.childCount) {
+        for (i in 0..parent.childCount.minus(1)) {
             var child: View = parent.getChildAt(i)
             var position = parent.getChildAdapterPosition(child)
 
