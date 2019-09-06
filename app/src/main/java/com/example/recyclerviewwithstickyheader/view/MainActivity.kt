@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewModel = ViewModelProviders.of(this).get(ListViewModel::class.java)
+        observeMethod()
         viewModel.fetchData()
 
         val recSection = RecyclerSectionItemDecoration(20,true, getSectionCallback(viewModel.plainInfo))
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         //TODO RecyclerSectionItemDecoration
 
-      //  observeMethod()
+      //
     }
 
 

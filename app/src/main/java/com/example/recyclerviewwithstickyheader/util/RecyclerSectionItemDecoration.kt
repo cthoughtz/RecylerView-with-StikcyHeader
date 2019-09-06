@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerviewwithstickyheader.R
 import kotlinx.android.synthetic.main.list_items.view.*
@@ -45,8 +46,7 @@ class RecyclerSectionItemDecoration(val headerOffSet: Int,
 
         var prevoiusHeader: CharSequence? = ""
 
-        for (i in 1..parent.childCount) {
-            var child: View = parent.getChildAt(i)
+        parent.children.forEach { child ->
             var position = parent.getChildAdapterPosition(child)
 
             var title: CharSequence = sectionCallback!!.gettSectionHeader(position)

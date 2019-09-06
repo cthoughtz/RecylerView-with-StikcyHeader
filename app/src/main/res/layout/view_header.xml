@@ -8,6 +8,7 @@
     <TextView
         android:id="@+id/tv_header"
         tools:text="Sample Header"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
